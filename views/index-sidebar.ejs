@@ -1,0 +1,38 @@
+<div class="page-sidebar nav-collapse collapse">
+			<!-- BEGIN SIDEBAR MENU -->        
+			<ul class="page-sidebar-menu">
+				<li>
+					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+					<div class="sidebar-toggler hidden-phone"></div>
+					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+				</li>
+				<!--<li class="start active ">
+					<a href="index.html">
+					<i class="icon-home"></i> 
+					<span class="title">Dashboard</span>
+					<span class="selected"></span>
+					</a>
+				</li>-->
+
+			<% permissionArr.forEach(function(permission){ %>
+				<li class="">
+					<a href="javascript:;">
+					<i class="icon-cogs"></i> 
+					<span class="title"><%= __(permission.permissionName) %></span>
+					<span class="arrow"></span>
+					</a>
+					<ul class="sub-menu" style="display: none;">
+						<% permission.children.forEach(function(children){ %>
+							<li>
+								<a href="<%= children.herfValue %>">
+								<%= __(children.permissionName) %></a>
+							</li>
+						<%	}) %>
+					</ul>
+				</li>
+			<%	}) %>
+			</ul>
+
+			<!-- END SIDEBAR MENU -->
+
+		</div>
