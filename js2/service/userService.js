@@ -47,8 +47,7 @@ userService.queryUserForPage = function(page,searchObj){
 		sql +="  and u.USER_NAME like ? ";
 		params.push(searchObj.userName);
 	}
-	
-	
+	return  db.pageQuery(page,sql,params);
 }
 
 function md5(str) {

@@ -5,7 +5,6 @@ var ejs = require("ejs");
 var path = require("path");
 var reg = require("./js2/control/reg");
 var login = require("./js2/control/login");
-var userControl = require("./js2/control/userControl");
 var MyRouter = require("./js2/MyRouter");
 
 //国际化
@@ -29,13 +28,6 @@ const setLang = (req, res, next) => {
 
 app.use(setI18n());
 app.use(setLang);
-
-//路由设置
-app.use(function (req, res, next) {
-   MyRouter.init(req, res, next);
-});
-
-
 //post参数获取需引用
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -51,6 +43,12 @@ app.use(session({
 	}));
 app.set("views", path.join(__dirname, "views"))
 app.set("view engine", "html"); 
+
+
+//路由设置
+app.use(function (req, res, next) {
+   MyRouter.init(req, res, next);
+});
 
 //首页
 app.get("/",function(req,res){

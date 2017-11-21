@@ -9,14 +9,15 @@ var Index = function () {
         menuOperation:function(){
         	$(".sub-menu a").click(function(){
 				var url = $(this).attr("href");
-				Index.changeContent(url);
+				Index.changeContent(url,{});
 				return false;
 			});
         },
-        changeContent:function(url){
+        changeContent:function(url,data){
         	$.ajax({
 				url:url,
 				type:"post",
+				data:data,
 				success:function(data){
 					$(".page-content").html(data);
 				}
